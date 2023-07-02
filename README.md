@@ -22,7 +22,7 @@ Shooting and sprinting takes up your stamina, so make sure you use these abiliti
 
 
 # Downloads
-[logo](https://github.com/HowDoIprintHelloWorld/DeadMaze/blob/main/assets/logo.png)
+![logo](https://github.com/HowDoIprintHelloWorld/DeadMaze/blob/main/assets/logo.png)
 ## Windows:
 [Download link](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/HowDoIprintHelloWorld/DeadMaze/blob/e315038f4c13851d19d3107ed468eb829dc7cc5d/releases/deadMaze2.exe) - Download via Downgit (Use if you don't know what github is)
 
