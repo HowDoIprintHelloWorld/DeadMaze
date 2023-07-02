@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxjime0tr4v3g"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_na1hi"]
+[ext_resource type="Theme" uid="uid://cpyn7jkdekiiy" path="res://hudTheme.tres" id="2_wcjbd"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x1nn8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q16qb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67d8r"]
+
+[sub_resource type="Theme" id="Theme_no78v"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_q16qb")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_67d8r")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52dxv"]
+bg_color = Color(0.584314, 0.752941, 0.992157, 1)
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.380392, 0.490196, 1, 1)
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sl36g"]
+bg_color = Color(0, 0.356863, 0.847059, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0.380392, 0.490196, 1, 1)
+corner_radius_bottom_left = 12
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_na1hi")
+
+[node name="healthBar" type="ProgressBar" parent="."]
+material = SubResource("CanvasItemMaterial_x1nn8")
+offset_left = 18.0
+offset_top = 19.0
+offset_right = 404.0
+offset_bottom = 64.0
+theme = ExtResource("2_wcjbd")
+value = 75.0
+rounded = true
+show_percentage = false
+
+[node name="staminaBar" type="ProgressBar" parent="."]
+offset_left = 18.0
+offset_top = 72.0
+offset_right = 354.0
+offset_bottom = 101.0
+theme = SubResource("Theme_no78v")
+theme_override_styles/background = SubResource("StyleBoxFlat_52dxv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sl36g")
+value = 50.0
+show_percentage = false

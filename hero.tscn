@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhxs0shmlmax4"]
+
+[ext_resource type="Texture2D" uid="uid://b0j80qtjj0xl8" path="res://assets/frame_00010.png" id="1_8qanf"]
+[ext_resource type="Script" path="res://hero.gd" id="1_qk3xh"]
+[ext_resource type="Texture2D" uid="uid://g0hry4ag3g1w" path="res://assets/frame_00012.png" id="3_k5wtn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cfdq3"]
+radius = 72.9524
+height = 221.781
+
+[node name="hero" type="CharacterBody2D" groups=["hero"]]
+script = ExtResource("1_qk3xh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8qanf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 33)
+rotation = -1.54586
+shape = SubResource("CapsuleShape2D_cfdq3")
+
+[node name="gun" type="Sprite2D" parent="."]
+position = Vector2(25, -61)
+rotation = -1.42385
+texture = ExtResource("3_k5wtn")
+offset = Vector2(-25, 61)
+
+[node name="bulletPos" type="Node2D" parent="gun"]
+position = Vector2(-0.746155, -175.785)
+rotation = 1.42385

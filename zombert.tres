@@ -1,0 +1,59 @@
+[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://cjxg3clan0f6o"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_x6r21"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeCompare" id="VisualShaderNodeCompare_fq1wb"]
+output_port_for_preview = 0
+default_input_values = [0, false, 1, false, 2, 1e-05]
+type = 6
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ynfaj"]
+output_port_for_preview = 0
+input_name = "light"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_drqrm"]
+input_name = "normal"
+
+[sub_resource type="VisualShaderNodeDotProduct" id="VisualShaderNodeDotProduct_tm26j"]
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+
+void fragment() {
+// Input:3
+	vec2 n_out3p0 = UV;
+
+
+// Compare:4
+	bool n_in4p1 = false;
+	bool n_out4p0 = all(bvec2(n_out3p0)) == n_in4p1;
+
+
+// Output:0
+	COLOR.a = (n_out4p0 ? 1.0 : 0.0);
+
+
+}
+"
+graph_offset = Vector2(-244.578, 19.4225)
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(480, 120)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_x6r21")
+nodes/fragment/3/position = Vector2(-160, 140)
+nodes/fragment/4/node = SubResource("VisualShaderNodeCompare_fq1wb")
+nodes/fragment/4/position = Vector2(160, 160)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 4, 0, 0, 1)
+nodes/light/0/position = Vector2(740, 80)
+nodes/light/2/node = SubResource("VisualShaderNodeInput_ynfaj")
+nodes/light/2/position = Vector2(-160, 40)
+nodes/light/3/node = SubResource("VisualShaderNodeInput_drqrm")
+nodes/light/3/position = Vector2(-100, 280)
+nodes/light/4/node = SubResource("VisualShaderNodeDotProduct_tm26j")
+nodes/light/4/position = Vector2(200, 100)
+nodes/light/connections = PackedInt32Array(2, 0, 4, 0, 3, 0, 4, 1)

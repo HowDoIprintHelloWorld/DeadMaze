@@ -1,0 +1,111 @@
+[gd_scene load_steps=15 format=3 uid="uid://dnu23y6uvff3k"]
+
+[ext_resource type="Texture2D" uid="uid://bqmfqhb4fkm86" path="res://assets/frame_00001.png" id="1_bsyfj"]
+[ext_resource type="Script" path="res://zombert.gd" id="1_eqnjh"]
+[ext_resource type="Texture2D" uid="uid://cx5docc2cgaj6" path="res://assets/frame_00002.png" id="3_5ycrt"]
+[ext_resource type="Texture2D" uid="uid://dgvaox6jcxiro" path="res://assets/frame_00003.png" id="4_aecvu"]
+[ext_resource type="Texture2D" uid="uid://dyps2dnyvexj3" path="res://assets/frame_00004.png" id="5_jt1hs"]
+[ext_resource type="Texture2D" uid="uid://b5vg3ut6hypge" path="res://assets/frame_00005.png" id="6_u3cm7"]
+[ext_resource type="Texture2D" uid="uid://cljklmabbw5h3" path="res://assets/frame_00006.png" id="7_v7jsq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jriry"]
+light_mode = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vwqup"]
+radius = 66.9768
+height = 263.966
+
+[sub_resource type="Animation" id="Animation_ne3jk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_bsyfj")]
+}
+
+[sub_resource type="Animation" id="Animation_d2782"]
+resource_name = "attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_u3cm7"), ExtResource("7_v7jsq")]
+}
+
+[sub_resource type="Animation" id="Animation_optlj"]
+resource_name = "run"
+length = 0.6
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_bsyfj"), ExtResource("3_5ycrt"), ExtResource("4_aecvu"), ExtResource("5_jt1hs")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xec7a"]
+_data = {
+"RESET": SubResource("Animation_ne3jk"),
+"attack": SubResource("Animation_d2782"),
+"run": SubResource("Animation_optlj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aymdd"]
+size = Vector2(286, 207)
+
+[node name="zombert" type="CharacterBody2D" groups=["enemy"]]
+light_mask = 4
+script = ExtResource("1_eqnjh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["enemy"]]
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_jriry")
+texture = ExtResource("1_bsyfj")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 200.0
+target_desired_distance = 200.0
+path_max_distance = 400.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, 28)
+rotation = -1.57406
+shape = SubResource("CapsuleShape2D_vwqup")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xec7a")
+}
+
+[node name="hitterBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitterBox"]
+position = Vector2(-3, -62.5)
+shape = SubResource("RectangleShape2D_aymdd")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://nbrgdk4otsc6"]
+
+[ext_resource type="Texture2D" uid="uid://bmbhlg0ahmt12" path="res://assets/logo.png" id="1_3wtlq"]
+[ext_resource type="Script" path="res://main_menu.gd" id="1_b60r7"]
+[ext_resource type="Texture2D" uid="uid://d2ylkmwbq48re" path="res://assets/titlescreen.png" id="3_3d4d3"]
+
+[sub_resource type="SystemFont" id="SystemFont_usy48"]
+font_names = PackedStringArray("Sans-Serif")
+msdf_pixel_range = 36
+msdf_size = 59
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18hm8"]
+bg_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0on2y"]
+bg_color = Color(0.580392, 0.580392, 0.580392, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fo7ia"]
+bg_color = Color(0.933333, 0.933333, 0.933333, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="mainMenu" type="CanvasLayer"]
+script = ExtResource("1_b60r7")
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(262, 100)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_3wtlq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -15.0
+offset_top = -13.0
+offset_right = 1169.0
+offset_bottom = 661.0
+color = Color(0, 0, 0, 1)
+
+[node name="start" type="Button" parent="."]
+z_index = 1
+offset_left = 26.0
+offset_top = 542.0
+offset_right = 258.0
+offset_bottom = 620.0
+theme_override_colors/font_outline_color = Color(0.811765, 0.811765, 0.811765, 1)
+theme_override_fonts/font = SubResource("SystemFont_usy48")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hm8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0on2y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fo7ia")
+text = "Start"
+
+[node name="quit" type="Button" parent="."]
+z_index = 1
+offset_left = 26.0
+offset_top = 446.0
+offset_right = 243.0
+offset_bottom = 519.0
+theme_override_colors/font_outline_color = Color(0.811765, 0.811765, 0.811765, 1)
+theme_override_fonts/font = SubResource("SystemFont_usy48")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hm8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0on2y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fo7ia")
+text = "Quit"
+
+[node name="Titlescreen" type="Sprite2D" parent="."]
+position = Vector2(870, 328)
+scale = Vector2(0.5048, 0.5048)
+texture = ExtResource("3_3d4d3")
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
