@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://3na8kkq44syj" path="res://assets/zombieDirt.mp3" id="8_ckn6g"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jriry"]
+light_mode = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vwqup"]
 radius = 66.9768
@@ -87,7 +88,6 @@ texture = ExtResource("1_bsyfj")
 path_desired_distance = 200.0
 target_desired_distance = 200.0
 path_max_distance = 400.0
-debug_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6, 28)
