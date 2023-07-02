@@ -22,16 +22,16 @@ Shooting and sprinting takes up your stamina, so make sure you use these abiliti
 
 
 # Downloads
-![logo](https://github.com/HowDoIprintHelloWorld/DeadMaze/blob/main/assets/logo.png)
+[logo](https://github.com/HowDoIprintHelloWorld/DeadMaze/blob/main/assets/logo.png)
 ## Windows:
-![Download link](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/HowDoIprintHelloWorld/DeadMaze/blob/e315038f4c13851d19d3107ed468eb829dc7cc5d/releases/deadMaze2.exe) - Download via Downgit (Use if you don't know what github is)
+[Download link](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/HowDoIprintHelloWorld/DeadMaze/blob/e315038f4c13851d19d3107ed468eb829dc7cc5d/releases/deadMaze2.exe) - Download via Downgit (Use if you don't know what github is)
 
-![Download manual](https://github.com/HowDoIprintHelloWorld/DeadMaze/blob/main/releases/deadMaze2.exe) - Direct download
+[Download manual](https://github.com/HowDoIprintHelloWorld/DeadMaze/blob/main/releases/deadMaze2.exe) - Direct download
 
 ## Linux:
 No downgit here because you know what youre doing ;)
 
-![Download link](https://github.com/HowDoIprintHelloWorld/DeadMaze/blob/main/releases/deadMaze2.x86_64) - Direct download
+[Download link](https://github.com/HowDoIprintHelloWorld/DeadMaze/blob/main/releases/deadMaze2.x86_64) - Direct download
 
 ## MacOS:
 Sorry, no download for you. MacOS is a pain to make Apps for and I'm not about to spend hours getting this to work...
