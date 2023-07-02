@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 1000.0
+const SPEED = 800.0
 const JUMP_VELOCITY = -400.0
 var pos = null
 var direction = Vector2(0, 0)
@@ -44,6 +44,8 @@ func _physics_process(delta):
 		direction = (nextPos - global_position).normalized()
 		look_at(nextPos)
 		rotate(deg_to_rad(90))
+		if not $walking.playing:
+			$walking.play()
 	else:
 		attack(delta)
 		direction = Vector2(0, 0)

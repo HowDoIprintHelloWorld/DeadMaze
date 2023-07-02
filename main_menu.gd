@@ -13,7 +13,6 @@ func _process(delta):
 
 func _on_start_pressed():
 	get_tree().change_scene_to_file("res://main_game.tscn")
-	print("changed scene")
 
 
 func _on_quit_pressed():

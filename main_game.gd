@@ -7,7 +7,8 @@ var hud = preload("res://hud.tscn")
 
 var cam = null
 
-var lightningCD = 10
+var lastLightningRand = 0
+var lightningCD = 8
 var lastLightning = lightningCD
 
 @onready var sg = get_node("/root/MainSg")
@@ -32,8 +33,10 @@ func addCam(player):
 	player.add_child(cam)
 	cam.global_position = player.global_position
 	cam.zoom = Vector2(0.35, 0.35)
-	cam.limit_left = -525
-	cam.limit_top = -525
+	cam.limit_left = -510
+	cam.limit_top = -510
+	cam.limit_bottom = 30550
+	cam.limit_right = 30530
 	return cam
 	
 
@@ -69,12 +72,16 @@ func setHud():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if not $crickets.playing:
+		$crickets.play()
 	lastLightning -= delta
 	if lastLightning <= 0:
-		lastLightning = lightningCD
+		lastLightningRand = RandomNumberGenerator.new().randi_range(0, 5)
+		lastLightning = lightningCD + lastLightningRand
 		var dl = DirectionalLight2D.new()
 		add_child(dl)
-	elif lastLightning <= lightningCD - 1:
+		$lightning.play()
+	elif lastLightning <= lightningCD + lastLightningRand - 1:
 		for child in get_children():
 			if "DirectionalLight2D" in child.name:
 				child.queue_free()

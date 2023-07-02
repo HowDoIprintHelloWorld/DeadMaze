@@ -5,7 +5,7 @@ var lastAttempt = 0
 
 var zombieS = preload("res://zombert.tscn")
 
-@export var spawnOdds = 20
+@export var spawnOdds = 10
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

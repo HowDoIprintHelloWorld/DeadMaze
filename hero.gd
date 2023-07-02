@@ -25,7 +25,7 @@ var shootCD = shootMax
 func attack(dmg):
 	health -= dmg
 	if health <= 0:
-		queue_free()
+		get_tree().change_scene_to_file("res://main_menu.tscn")
 
 
 func addSprint(delta):
@@ -69,6 +69,9 @@ func shootAndMove(delta):
 		if Input.is_action_pressed("click") and shootCD == shootMax and sprintMana > 0:
 			sprintMana -= 0.3
 			shootCD = 0
+			$AudioStreamPlayer2D.stream = preload("res://assets/shoot.mp3")
+			$AudioStreamPlayer2D.play()
+			#$AudioStreamPlayer2D.
 			var bullet = bulletScene.instantiate()
 			bullet.position = bulletPos.global_position
 			bullet.rotation =  rotation
@@ -97,4 +100,11 @@ func _physics_process(delta):
 	velocity = input_direction.normalized() * SPEED * speedMultiplier
 	if velocity == Vector2(0, 0) and speedMultiplier >= 1.4:
 		addSprint(delta)
+	if velocity:
+		if not $walkPlayer.playing:
+			$walkPlayer.stream = preload("res://assets/footsteps.mp3")
+			$walkPlayer.play()
+	else:
+		if $walkPlayer.playing:
+			$walkPlayer.playing = false
 	move_and_slide()

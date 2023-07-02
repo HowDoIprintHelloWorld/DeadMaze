@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhxs0shmlmax4"]
+[gd_scene load_steps=6 format=3 uid="uid://dhxs0shmlmax4"]
 
 [ext_resource type="Texture2D" uid="uid://b0j80qtjj0xl8" path="res://assets/frame_00010.png" id="1_8qanf"]
 [ext_resource type="Script" path="res://hero.gd" id="1_qk3xh"]
 [ext_resource type="Texture2D" uid="uid://g0hry4ag3g1w" path="res://assets/frame_00012.png" id="3_k5wtn"]
+[ext_resource type="AudioStream" uid="uid://dftc3i36dwtru" path="res://assets/shoot.mp3" id="4_ciwow"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cfdq3"]
 radius = 72.9524
@@ -28,3 +29,9 @@ offset = Vector2(-25, 61)
 [node name="bulletPos" type="Node2D" parent="gun"]
 position = Vector2(-0.746155, -175.785)
 rotation = 1.42385
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ciwow")
+attenuation = 2.0
+
+[node name="walkPlayer" type="AudioStreamPlayer2D" parent="."]

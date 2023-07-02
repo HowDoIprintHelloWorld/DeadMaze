@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dnu23y6uvff3k"]
+[gd_scene load_steps=16 format=3 uid="uid://dnu23y6uvff3k"]
 
 [ext_resource type="Texture2D" uid="uid://bqmfqhb4fkm86" path="res://assets/frame_00001.png" id="1_bsyfj"]
 [ext_resource type="Script" path="res://zombert.gd" id="1_eqnjh"]
@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dyps2dnyvexj3" path="res://assets/frame_00004.png" id="5_jt1hs"]
 [ext_resource type="Texture2D" uid="uid://b5vg3ut6hypge" path="res://assets/frame_00005.png" id="6_u3cm7"]
 [ext_resource type="Texture2D" uid="uid://cljklmabbw5h3" path="res://assets/frame_00006.png" id="7_v7jsq"]
+[ext_resource type="AudioStream" uid="uid://3na8kkq44syj" path="res://assets/zombieDirt.mp3" id="8_ckn6g"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jriry"]
-light_mode = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vwqup"]
 radius = 66.9768
@@ -87,6 +87,7 @@ texture = ExtResource("1_bsyfj")
 path_desired_distance = 200.0
 target_desired_distance = 200.0
 path_max_distance = 400.0
+debug_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6, 28)
@@ -107,5 +108,8 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitterBox"]
 position = Vector2(-3, -62.5)
 shape = SubResource("RectangleShape2D_aymdd")
+
+[node name="walking" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ckn6g")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
